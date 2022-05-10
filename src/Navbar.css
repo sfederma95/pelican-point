@@ -1,0 +1,116 @@
+.nav {
+  height: 150px;
+  width: 100%;
+  background-image: linear-gradient(
+    white 85%,
+    rgba(217, 216, 216, 0.491) 95%,
+    rgba(188, 188, 188, 0.494) 100%
+  );
+  position: relative;
+  font-family: fantasy;
+}
+
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 22px;
+  color: black;
+  padding: 10px 10px 10px 10px;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 18px;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 70px 50px 0px 30px;
+  text-decoration: none;
+  color: rgb(87, 87, 87);
+}
+
+.nav > .nav-links > a:hover {
+  text-decoration: underline 3px rgba(133, 222, 254, 0.646);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .nav {
+    height: 50px;
+  }
+  .nav > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .nav > .nav-btn > label:hover,
+  .nav #nav-check:checked ~ .nav-btn > label {
+    cursor: pointer;
+  }
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 2px solid black;
+  }
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: white;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 50px;
+    left: 0px;
+  }
+  .nav > .nav-links > a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 3em;
+    margin-top: -2.5em;
+    text-decoration: underline 3px rgba(133, 222, 254, 0.646);
+  }
+  .nav > .nav-links > a:first-child {
+    margin-top: 0em;
+  }
+  .nav > .nav-links > a:hover {
+    font-weight: 900;
+  }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0px;
+  }
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
+
+.share {
+  background-color: rgb(255, 132, 0);
+  border-color: rgb(255, 132, 0);
+  border-radius: 5%;
+  padding: 0.5em 1.5em 0.5em 1.5em;
+  color: white;
+  text-emphasis: bold;
+}
