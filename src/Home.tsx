@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Background_1 from "./img/background1.jpg";
 import "./Home.css";
+import { DateRangePicker, SelectPicker, Button } from "rsuite";
+import "rsuite/dist/rsuite.min.css";
 
 export const Home = () => {
+  const openEmailWindow = () => {
+    window.open("mailto:cebeehomes@gmail.com?subject=Rentals");
+  };
   return (
     <div className="home">
       <div className="sidebar"></div>
@@ -12,7 +17,30 @@ export const Home = () => {
         <p>
           Vacation Homes in the Riviera Maya and Puerto Penasco offered by Cece
         </p>
-        <button>More Information and Inquiries</button>
+        <form>
+          <DateRangePicker
+            showOneCalendar
+            block
+            placeholder="Select Date Range"
+          />
+          <SelectPicker
+            data={[
+              { label: "Puerto Penasco - Sonoran Sun", value: "sonoran-sun" },
+              { label: "Puerto Penasco - Sonoran Spa", value: "sonoran-spa" },
+              { label: "Tulum", value: "tulum" },
+            ]}
+            searchable={false}
+            block
+          />
+          <Button
+            onClick={openEmailWindow}
+            color="cyan"
+            appearance="primary"
+            block
+          >
+            Book Directly
+          </Button>
+        </form>
       </div>
       {/* <div>
         <h2>Relax refresh and recharge</h2>

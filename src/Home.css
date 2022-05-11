@@ -44,8 +44,8 @@
   line-height: 2;
 }
 
-.home .text button {
-  font-size: 1.3em;
+/* .home .text button {
+  font-size: 1em;
   width: 25%;
   height: 2.9em;
   margin-top: 2%;
@@ -53,4 +53,9 @@
   box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.438);
   border: 0.5px solid;
   background-color: rgb(247, 245, 222);
+  text-transform: uppercase;
 }
+
+.home .text button:hover {
+  cursor: pointer;
+} */

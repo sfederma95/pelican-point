@@ -10,6 +10,11 @@ export const Navbar = () => {
       setCurrentHeight(_navBar.current.style.height);
     }
   }, []);
+  window.onresize = () => {
+    if (window.innerWidth > 880 && _navBar.current) {
+      _navBar.current.style.height = currentHeight;
+    }
+  };
   const handleChange = (e: { target: { checked: any } }) => {
     const checked = e.target.checked;
     if (_navBar.current) {
