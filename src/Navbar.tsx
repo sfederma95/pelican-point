@@ -39,7 +39,7 @@ export const Navbar = () => {
         </label>
       </div>
       <div className="nav-links">
-        <a href="/home">Home</a>
+        <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/testimonials">Testimonials</a>
         <a href="/special-offers">Special Offers</a>
