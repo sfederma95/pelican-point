@@ -3,7 +3,7 @@ import "./Navbar.css";
 import { useRef, useEffect, useState } from "react";
 
 export const Navbar = () => {
-  const _navBar = useRef<HTMLDivElement>(null);
+  const _navBar = useRef(null);
   const [currentHeight, setCurrentHeight] = useState("");
   useEffect(() => {
     if (_navBar.current) {
@@ -15,7 +15,7 @@ export const Navbar = () => {
       _navBar.current.style.height = currentHeight;
     }
   };
-  const handleChange = (e: { target: { checked: any } }) => {
+  const handleChange = (e) => {
     const checked = e.target.checked;
     if (_navBar.current) {
       if (checked) {

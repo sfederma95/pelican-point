@@ -9,7 +9,6 @@ import {
   Divider,
 } from "rsuite";
 import { Card } from "./Card";
-import "rsuite/dist/rsuite.min.css";
 import Background_1 from "./img/background1.jpg";
 
 export const About = () => {
@@ -41,23 +40,15 @@ export const About = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: "5% 2% 5% 2%",
+            padding: "5% 0 5% 0",
             overflowY: "hidden",
+            background: `url(${Background_1}) no-repeat 0 0`,
+            backgroundSize: "cover",
           }}
         >
-          <h1 style={{ fontFamily: "cursive", zIndex: "5" }}>
+          <h1 style={{ fontFamily: "cursive", maxWidth: "90%" }}>
             About Our Properties
           </h1>
-          <img
-            src={Background_1}
-            style={{
-              objectFit: "cover",
-              objectPosition: "middle left",
-              opacity: "0.8",
-              width: "100%",
-              position: "absolute",
-            }}
-          />
         </FlexboxGrid.Item>
         <FlexboxGrid.Item
           as={Col}
@@ -75,7 +66,7 @@ export const About = () => {
             style={{
               fontSize: "1.8em",
               fontFamily: "Arial, Helvetica, sans-serif",
-              width: "60%",
+              maxWidth: "90%",
             }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo, quidem
@@ -158,28 +149,13 @@ export const About = () => {
         <FlexboxGrid.Item
           as={Col}
           colspan={24}
+          className="bottom-img"
           style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "5% 2% 5% 2%",
             overflowY: "hidden",
+            background: `url(${Background_1}) no-repeat 0 0`,
+            backgroundSize: "cover",
           }}
-        >
-          <img
-            src={Background_1}
-            style={{
-              objectFit: "cover",
-              objectPosition: "top left",
-              opacity: "0.8",
-              width: "100%",
-              position: "absolute",
-              top: "0px",
-              left: "0px",
-            }}
-          />
-        </FlexboxGrid.Item>
+        ></FlexboxGrid.Item>
       </FlexboxGrid>
     </Content>
   );

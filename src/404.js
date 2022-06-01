@@ -1,7 +1,5 @@
 import React from "react";
 import { Col, Container, Content, FlexboxGrid, Panel, Row } from "rsuite";
-import { Card } from "./Card";
-import "rsuite/dist/rsuite.min.css";
 
 export const NotFound = () => {
   return (

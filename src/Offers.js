@@ -1,7 +1,6 @@
 import React from "react";
 import { Col, Container, Content, FlexboxGrid, Panel, Row } from "rsuite";
 import Background_1 from "./img/background1.jpg";
-import "rsuite/dist/rsuite.min.css";
 
 export const Offers = () => {
   return (
@@ -32,23 +31,15 @@ export const Offers = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            padding: "5% 2% 5% 2%",
+            padding: "5% 0 5% 0",
             overflowY: "hidden",
+            background: `url(${Background_1}) no-repeat 0 0`,
+            backgroundSize: "cover",
           }}
         >
-          <h1 style={{ fontFamily: "cursive", zIndex: "5" }}>
+          <h1 style={{ fontFamily: "cursive", maxWidth: "90%" }}>
             Make Memories With Us
           </h1>
-          <img
-            src={Background_1}
-            style={{
-              objectFit: "cover",
-              objectPosition: "middle left",
-              opacity: "0.8",
-              width: "100%",
-              position: "absolute",
-            }}
-          />
         </FlexboxGrid.Item>
         <FlexboxGrid.Item
           colspan={24}
@@ -113,28 +104,13 @@ export const Offers = () => {
         <FlexboxGrid.Item
           as={Col}
           colspan={24}
+          className="bottom-img"
           style={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: "5% 2% 5% 2%",
             overflowY: "hidden",
+            background: `url(${Background_1}) no-repeat 0 0`,
+            backgroundSize: "cover",
           }}
-        >
-          <img
-            src={Background_1}
-            style={{
-              objectFit: "cover",
-              objectPosition: "top left",
-              opacity: "0.8",
-              width: "100%",
-              position: "absolute",
-              top: "0px",
-              left: "0px",
-            }}
-          />
-        </FlexboxGrid.Item>
+        ></FlexboxGrid.Item>
       </FlexboxGrid>
     </Content>
   );

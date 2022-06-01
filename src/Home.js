@@ -8,62 +8,70 @@ import {
   FlexboxGrid,
   Form,
   Panel,
+  Schema,
   SelectPicker,
 } from "rsuite";
-import "rsuite/dist/rsuite.min.css";
-import ReCAPTCHA from "react-google-recaptcha";
 import { forwardRef } from "react";
-import { PickerInstance } from "rsuite/esm/Picker";
 import Background_1 from "./img/background1.jpg";
 
-export const Home2 = () => {
-  const [reCaptcha, setReCaptcha] = useState(
-    <ReCAPTCHA
-      sitekey="6Lfs2A4gAAAAALNUUsbQQiXqNIysLq0Ijpq6akRq"
-      onChange={onChange}
-      size="normal"
-      className="g-recaptcha"
-    />
-  );
-  useEffect(() => {
-    if (window.innerWidth < 500) {
-      setReCaptcha(
-        <ReCAPTCHA
-          sitekey="6Lfs2A4gAAAAALNUUsbQQiXqNIysLq0Ijpq6akRq"
-          onChange={onChange}
-          size="compact"
-          className="g-recaptcha"
-        />
-      );
-    }
+export const Home = () => {
+  const { StringType, ArrayType, NumberType } = Schema.Types;
+  const _form = useRef(null);
+  const [formData, setFormData] = useState({
+    email: "",
+    dates: [],
+    properties: "",
+    guests: null,
   });
-  const propertyPicker = forwardRef(
-    (props, ref?: React.Ref<PickerInstance>) => (
-      <SelectPicker
-        {...props}
-        ref={ref}
-        data={[
-          { label: "Puerto Penasco - Sonoran Sun", value: "sonoran-sun" },
-          { label: "Puerto Penasco - Sonoran Spa", value: "sonoran-spa" },
-          { label: "Tulum", value: "tulum" },
-        ]}
-        searchable={false}
-        block
-      />
-    )
-  );
-  const datePicker = forwardRef((props, ref?: React.Ref<PickerInstance>) => (
+  const model = Schema.Model({
+    email: StringType()
+      .isEmail("Please enter a valid email address")
+      .isRequired("This field is required."),
+    properties: StringType().isRequired("This field is required"),
+    dates: ArrayType().isRequired("This field is required"),
+    name: StringType(),
+    guests: NumberType()
+      .isRequired("A number is required greater than 0")
+      .min(1, "Must be greater than 0"),
+  });
+  const handleSubmit = () => {
+    if (_form.current && _form.current.check()) {
+      if (!formData.name) console.log("Good");
+    }
+  };
+  const handlePropertiesChange = (value) => {
+    setFormData({ ...formData, properties: value });
+  };
+  const handleDatesChange = (value) => {
+    setFormData({ ...formData, dates: value });
+  };
+  const handleFormChange = (object, value) => {
+    const key = value.target.id;
+    setFormData({ ...formData, [key]: object[key] });
+  };
+  const propertyPicker = forwardRef(() => (
+    <SelectPicker
+      data={[
+        { label: "Puerto Penasco - Sonoran Sun", value: "sonoran-sun" },
+        { label: "Puerto Penasco - Sonoran Spa", value: "sonoran-spa" },
+        { label: "Tulum", value: "tulum" },
+      ]}
+      searchable={false}
+      block
+      name="properties"
+      onChange={handlePropertiesChange}
+      value={formData.properties}
+    />
+  ));
+  const datePicker = forwardRef(() => (
     <DateRangePicker
-      {...props}
       showOneCalendar
       block
       placeholder="Select Date Range"
-      ref={ref}
+      value={formData.dates}
+      onChange={handleDatesChange}
     />
   ));
-  function onChange(value: string | null) {
-    console.log("Captcha value:", value);
-  }
   return (
     <Content
       style={{
@@ -153,6 +161,11 @@ export const Home2 = () => {
                   >
                     <Form
                       fluid
+                      ref={_form}
+                      onSubmit={handleSubmit}
+                      formValue={formData}
+                      onChange={handleFormChange}
+                      model={model}
                       style={{
                         display: "flex",
                         flexDirection: "column",
@@ -161,27 +174,45 @@ export const Home2 = () => {
                     >
                       <Form.Group controlId="email">
                         <Form.ControlLabel>Email</Form.ControlLabel>
-                        <Form.Control name="email" type="email" />
+                        <Form.Control
+                          name="email"
+                          placeholder="Your e-mail here"
+                          value={formData.email || ""}
+                          type="text"
+                        />
                       </Form.Group>
-                      <Form.Group>
+                      <Form.Group controlId="guests">
+                        <Form.ControlLabel>Guests</Form.ControlLabel>
+                        <Form.Control
+                          name="guests"
+                          placeholder="# of Guests"
+                          value={formData.guests || ""}
+                          type="number"
+                        />
+                      </Form.Group>
+                      <Form.Group controlId="dates">
                         <Form.ControlLabel>
                           Check-in & Check-Out:
                         </Form.ControlLabel>
-                        <Form.Control
-                          name="dates"
-                          accepter={datePicker}
-                        ></Form.Control>
+                        <Form.Control name="dates" accepter={datePicker} />
                       </Form.Group>
-                      <Form.Group>
+                      <Form.Group controlId="properties">
                         <Form.ControlLabel>Location:</Form.ControlLabel>
                         <Form.Control
                           name="properties"
                           accepter={propertyPicker}
-                        ></Form.Control>
+                        />
                       </Form.Group>
-                      <div style={{ textAlign: "center", margin: "2% 0 2% 0" }}>
-                        {reCaptcha}
-                      </div>
+                      <Form.Group controlId="name" className="name-input">
+                        <Form.ControlLabel>Name</Form.ControlLabel>
+                        <Form.Control
+                          name="name"
+                          autoComplete="off"
+                          type="text"
+                          placeholder="Your name here"
+                          value={formData.name || ""}
+                        />
+                      </Form.Group>
                       <ButtonToolbar>
                         <Button
                           appearance="primary"

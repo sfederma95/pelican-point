@@ -1,12 +1,7 @@
 import React from "react";
 import { Col, Container, Content, Panel, Row } from "rsuite";
 
-export const Card = (props: {
-  title: string;
-  name: string;
-  contact: string;
-  imgSrc: string;
-}) => (
+export const Card = (props) => (
   <Panel
     shaded
     bordered

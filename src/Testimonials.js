@@ -8,7 +8,6 @@ import {
   Carousel,
   Button,
 } from "rsuite";
-import "rsuite/dist/rsuite.min.css";
 import Background_1 from "./img/background1.jpg";
 
 export const Testimonials = () => {
@@ -66,7 +65,7 @@ export const Testimonials = () => {
           }}
         >
           <h2 className="subtitle">Testimonials</h2>
-          <Panel shaded className="car-panel">
+          <Panel shaded className="car-panel" style={{ marginBottom: "3%" }}>
             <Carousel
               key={`${placement}.${shape}`}
               placement={placement}
@@ -74,7 +73,7 @@ export const Testimonials = () => {
               className="custom-slider"
               autoplay
             >
-              <div className="car-slide">
+              <div className="car-slide" id="car-slide-1">
                 <h4>Name</h4>
                 <p>Date</p>
                 <p>
@@ -85,22 +84,22 @@ export const Testimonials = () => {
                   fugit.
                 </p>
               </div>
-              <div className="car-slide">
+              <div className="car-slide" id="car-slide-2">
                 <p>Name</p>
                 <p>Date</p>
                 <p>Description</p>
               </div>
-              <div className="car-slide">
+              <div className="car-slide" id="car-slide-3">
                 <p>Name</p>
                 <p>Date</p>
                 <p>Description</p>
               </div>
-              <div className="car-slide">
+              <div className="car-slide" id="car-slide-4">
                 <p>Name</p>
                 <p>Date</p>
                 <p>Description</p>
               </div>
-              <div className="car-slide">
+              <div className="car-slide" id="car-slide-5">
                 <p>Name</p>
                 <p>Date</p>
                 <p>Description</p>
