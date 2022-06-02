@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.6.2",
     "@rsuite/responsive-nav": "^5.0.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -13,6 +14,7 @@
     "@types/react-dom": "^18.0.3",
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
+    "dotenv": "^16.0.1",
     "react": "^18.1.0",
     "react-bootstrap": "^2.3.1",
     "react-dom": "^18.1.0",
@@ -50,6 +52,7 @@
   },
   "devDependencies": {
     "@types/react-google-recaptcha": "^2.1.5",
-    "@types/react-router-dom": "^5.3.3"
+    "@types/react-router-dom": "^5.3.3",
+    "emailjs": "^4.0.0"
   }
 }

@@ -8,10 +8,6 @@ body {
   width: 100vw;
 }
 
-.g-recaptcha {
-  display: inline-block;
-}
-
 .subtext {
   font-size: 1.8em;
   font-family: Arial, Helvetica, sans-serif;
